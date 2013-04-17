@@ -22,7 +22,7 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 	/** LOGGER. **/
 	private static final Log LOG = LogFactory.getLog(EpreuveServiceImpl.class);
 
-	String query = "SELECT * FROM epreuve order by discipline,dossard";
+	public static String QUERRY_LISTE_EPREUVE = "SELECT * FROM epreuve order by discipline,dossard";
 	/**
 	 * UID
 	 */
@@ -38,7 +38,7 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 		try {
 			conn = DataSource.getInstance().getConnection();
 			select = conn.createStatement();
-			result = select.executeQuery(query);
+			result = select.executeQuery(QUERRY_LISTE_EPREUVE);
 
 			while (result.next()) {
 				final Epreuve epreuve = new Epreuve();
@@ -52,31 +52,64 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 			}
 
 		} catch (SQLException e) {
-			LOG.error("Erreur SQL : " + query, e);
+			LOG.error("Erreur SQL : " + QUERRY_LISTE_EPREUVE, e);
 		} finally {
 			if (select != null) {
 				try {
 					select.close();
 				} catch (SQLException e) {
-					LOG.error("Erreur SQL : " + query, e);
+					LOG.error("Erreur SQL : " + QUERRY_LISTE_EPREUVE, e);
 				}
 			}
 			if (result != null) {
 				try {
 					result.close();
 				} catch (SQLException e) {
-					LOG.error("Erreur SQL : " + query, e);
+					LOG.error("Erreur SQL : " + QUERRY_LISTE_EPREUVE, e);
 				}
 			}
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					LOG.error("Erreur SQL : " + query, e);
+					LOG.error("Erreur SQL : " + QUERRY_LISTE_EPREUVE, e);
 				}
 			}
 		}
 		return lstEpreuve;
 	}
 
+	public void ajouterEpreuve(final Epreuve epreuve) throws Exception {
+		Statement stmt = null;
+		Connection conn = null;
+		try {
+			conn = DataSource.getInstance().getConnection();
+			stmt = conn.createStatement();
+			stmt.executeUpdate("INSERT INTO epreuve (discipline, dossard, temps, penalite, type, classement) "
+					+ "VALUES("
+					+ "'"
+					+ epreuve.getDiscipline()
+					+ "'"
+					+ ","
+					+ epreuve.getDossard()
+					+ ","
+					+ epreuve.getTemps()
+					+ ","
+					+ epreuve.getPenalite()
+					+ ","
+					+ "'"
+					+ epreuve.getType()
+					+ "'" + "," + epreuve.getClassement() + ")");
+
+		} catch (SQLException e) {
+			LOG.error("Erreur SQL ajout epreuve" + epreuve, e);
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+	}
 }

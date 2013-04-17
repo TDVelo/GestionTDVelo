@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<!-- TODO: Add <servlet> tags for each servlet here. -->
 	<!-- TODO: Add <servlet-mapping> tags for each <servlet> here. -->
-	<!-- TODO: Optionally add a <welcome-file-list> tag to display a welcome file. -->
+	<!-- TODO: Optionally add a <welcome-file-list> tag to display a welcome 
+		file. -->
 
-<!-- Servlets -->
-  <servlet>
-    <servlet-name>coureurServlet</servlet-name>
-    <servlet-class>fr.gillouard.tdvelo.server.coureur.CoureurServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>coureurServlet</servlet-name>
-    <url-pattern>/gestiontdvelo/coureur</url-pattern>
-  </servlet-mapping>
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>coureurServlet</servlet-name>
+		<servlet-class>fr.gillouard.tdvelo.server.coureur.CoureurServiceImpl</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>coureurServlet</servlet-name>
+		<url-pattern>/gestiontdvelo/coureur</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>epreuveServlet</servlet-name>
+		<servlet-class>fr.gillouard.tdvelo.server.epreuve.EpreuveServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>epreuveServlet</servlet-name>
+		<url-pattern>/gestiontdvelo/epreuve</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -10,4 +10,6 @@ public interface EpreuveServiceAsync {
 	void getListeEpreuve(final AsyncCallback<List<Epreuve>> callback)
 			throws IllegalArgumentException;
 
+	void ajouterEpreuve(Epreuve epreuve, AsyncCallback<Void> callback);
+
 }

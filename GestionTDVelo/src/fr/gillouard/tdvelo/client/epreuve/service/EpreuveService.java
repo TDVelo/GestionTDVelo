@@ -12,4 +12,5 @@ public interface EpreuveService extends RemoteService {
 
 	List<Epreuve> getListeEpreuve() throws IllegalArgumentException;
 
+	void ajouterEpreuve(Epreuve epreuve) throws Exception;
 }

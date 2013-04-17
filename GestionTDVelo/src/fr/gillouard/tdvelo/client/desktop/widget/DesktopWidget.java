@@ -7,6 +7,7 @@ import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
 import fr.gillouard.tdvelo.client.coureur.widget.CoureurWidget;
 import fr.gillouard.tdvelo.client.detail.widget.DetailWidget;
+import fr.gillouard.tdvelo.client.epreuve.poussin.widget.EpreuvePoussinWidget;
 
 public class DesktopWidget implements IsWidget {
 
@@ -15,7 +16,10 @@ public class DesktopWidget implements IsWidget {
 
 		final CoureurWidget coureurWid = new CoureurWidget();
 		final DetailWidget detailWid = new DetailWidget();
-		
+
+		// test
+		final EpreuvePoussinWidget wid = new EpreuvePoussinWidget();
+		wid.asWidget();
 		final HorizontalLayoutContainer con = new HorizontalLayoutContainer();
 		con.setPixelSize(1020, 750);
 

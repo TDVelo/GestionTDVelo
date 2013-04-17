@@ -24,7 +24,7 @@
 			<container:child layoutData="{verticalLayoutData}">
 				<form:FieldLabel text="Epreuve Adresse">
 					<form:widget>
-						<form:TextField ui:field="epreuve2" /><form:TextField ui:field="penalite2" />
+						<form:TextField ui:field="epreuve2" />
 					</form:widget>
 				</form:FieldLabel>
 			</container:child>
