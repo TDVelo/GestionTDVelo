@@ -71,4 +71,5 @@
 
 		</container:VerticalLayoutContainer>
 	</c:FramedPanel>
+	
 </ui:UiBinder>
