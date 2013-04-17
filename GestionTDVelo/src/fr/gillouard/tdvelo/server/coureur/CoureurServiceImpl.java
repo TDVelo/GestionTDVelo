@@ -36,7 +36,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 		final List<Coureur> lstCoureur = new ArrayList<Coureur>();
 
 		try {
-			Connection conn = DataSource.getInstance();
+			Connection conn = DataSource.getInstance().getConnection();
 			Statement select = conn.createStatement();
 			ResultSet result = select.executeQuery(REQ_ALL_COUREUR);
 			while (result.next()) {
@@ -69,7 +69,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 		final Coureur coureur = new Coureur();
 
 		try {
-			Connection conn = DataSource.getInstance();
+			Connection conn = DataSource.getInstance().getConnection();
 			Statement select = conn.createStatement();
 			ResultSet result = select.executeQuery(REQ_COUREUR + dossard);
 			result.next();
