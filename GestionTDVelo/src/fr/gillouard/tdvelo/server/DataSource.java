@@ -11,42 +11,52 @@ public class DataSource {
 
 	/** LOGGER. **/
 	private static final Log LOG = LogFactory.getLog(DataSource.class);
+	private Properties prop = new Properties();
 
-	private Connection connection;
-	private static DataSource dataSource;
+	private static DataSource datasource = null;
 
 	private DataSource() {
-		connection = init();
 	}
 
-	public static Connection getInstance() {
-		if (dataSource == null) {
-			dataSource = new DataSource();
+	public static DataSource getInstance() {
+		if (datasource == null) {
+			datasource = new DataSource();
+			datasource.init();
 		}
-		if(dataSource.getConnection() == null) {
-			dataSource.init();
+		return datasource;
+	}
+
+	/**
+	 * Initialisation
+	 */
+	private void init() {
+
+		try {
+			prop.load(this.getClass().getClassLoader()
+					.getResourceAsStream("TDVelo.properties"));
+
+			Class.forName(prop.getProperty("db.driver")).newInstance();
+
+		} catch (final Exception e) {
+			LOG.error(
+					"Erreur lors de l'initialisation de la connection a la base !",
+					e);
 		}
-		return dataSource.getConnection();
+
 	}
 
 	/**
 	 * @return the connection
 	 */
 	public Connection getConnection() {
-		return connection;
-	}
 
-	private synchronized Connection init() {
 		Connection conn = null;
 
 		try {
-			Properties prop = new Properties();
-			prop.load(getClass().getClassLoader().getResourceAsStream(
-					"TDVelo.properties"));
 
-			Class.forName(prop.getProperty("db.driver")).newInstance();
-			conn = DriverManager.getConnection(prop.getProperty("db.url"), prop.getProperty("db.user"),
-				prop.getProperty("db.password"));
+			conn = DriverManager.getConnection(prop.getProperty("db.url"),
+					prop.getProperty("db.user"),
+					prop.getProperty("db.password"));
 
 		} catch (final Exception e) {
 			LOG.error(

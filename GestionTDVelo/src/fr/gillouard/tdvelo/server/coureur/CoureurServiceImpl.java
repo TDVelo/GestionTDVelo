@@ -35,7 +35,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 		final List<Coureur> lstCoureur = new ArrayList<Coureur>();
 
 		try {
-			Connection conn = DataSource.getInstance();
+			Connection conn = DataSource.getInstance().getConnection();
 			Statement select = conn.createStatement();
 			ResultSet result = select.executeQuery(query);
 			while (result.next()) {
