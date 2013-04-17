@@ -1,5 +1,5 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd" [
-	<!ENTITY REP_DEST "/Users/c0681/git/GestionTDVelo/GestionTDVelo/logs">
+	<!ENTITY REP_DEST "/home/c2873/git/GestionTDVelo/GestionTDVelo/logs">
 ]>
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 

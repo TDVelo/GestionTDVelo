@@ -11,5 +11,6 @@ import fr.gillouard.tdvelo.shared.Coureur;
 public interface CoureurService extends RemoteService {
 
 	List<Coureur> getListeCoureur() throws IllegalArgumentException;
+	Coureur getDetailCoureur(final int dossard) throws IllegalArgumentException;
 
 }
