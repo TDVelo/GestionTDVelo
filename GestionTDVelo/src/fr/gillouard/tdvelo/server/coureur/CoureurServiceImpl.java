@@ -56,6 +56,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 			}
 			select.close();
 			result.close();
+			conn.close();
 		} catch (SQLException e) {
 			LOG.error("Erreur SQL : " + REQ_ALL_COUREUR, e);
 		}
@@ -86,6 +87,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 			coureur.setEquipe(result.getString("equipe"));
 			select.close();
 			result.close();
+			conn.close();
 		} catch (SQLException e) {
 			LOG.error("Erreur SQL : " + REQ_COUREUR + dossard, e);
 		}
