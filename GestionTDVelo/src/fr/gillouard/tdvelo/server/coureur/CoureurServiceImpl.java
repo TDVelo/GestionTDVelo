@@ -40,17 +40,17 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 			ResultSet result = select.executeQuery(query);
 			while (result.next()) {
 				final Coureur coureur = new Coureur();
-				coureur.setDossard(result.getInt(1));
-				coureur.setNom(result.getString(2));
-				coureur.setPrenom(result.getString(3));
-				if ("M".equals(result.getString(4))) {
+				coureur.setDossard(result.getInt("dossard"));
+				coureur.setNom(result.getString("nom"));
+				coureur.setPrenom(result.getString("prenom"));
+				if ("M".equals(result.getString("sexe"))) {
 					coureur.setSexe(true);
 				} else {
 					coureur.setSexe(false);
 				}
-				coureur.setCategorie(result.getString(5));
-				coureur.setClub(result.getString(6));
-				coureur.setEquipe(result.getString(7));
+				coureur.setCategorie(result.getString("categorie"));
+				coureur.setClub(result.getString("club"));
+				coureur.setEquipe(result.getString("equipe"));
 				lstCoureur.add(coureur);
 			}
 			select.close();
