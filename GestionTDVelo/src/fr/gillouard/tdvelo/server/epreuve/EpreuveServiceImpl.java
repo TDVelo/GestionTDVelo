@@ -1,4 +1,4 @@
-package fr.gillouard.tdvelo.server.coureur;
+package fr.gillouard.tdvelo.server.epreuve;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,27 +12,25 @@ import org.apache.commons.logging.LogFactory;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import fr.gillouard.tdvelo.client.coureur.service.CoureurService;
+import fr.gillouard.tdvelo.client.epreuve.service.EpreuveService;
 import fr.gillouard.tdvelo.server.DataSource;
-import fr.gillouard.tdvelo.shared.Coureur;
+import fr.gillouard.tdvelo.shared.Epreuve;
 
-public class CoureurServiceImpl extends RemoteServiceServlet implements
-		CoureurService {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class EpreuveServiceImpl extends RemoteServiceServlet implements
+		EpreuveService {
 
 	/** LOGGER. **/
-	private static final Log LOG = LogFactory.getLog(CoureurServiceImpl.class);
+	private static final Log LOG = LogFactory.getLog(EpreuveServiceImpl.class);
 
-	String query = "SELECT * FROM coureur order by categorie,dossard";
+	String query = "SELECT * FROM epreuve order by discipline,dossard";
+	/**
+	 * UID
+	 */
+	private static final long serialVersionUID = -5217040857543351560L;
 
 	@Override
-	public List<Coureur> getListeCoureur() throws IllegalArgumentException {
-
-		final List<Coureur> lstCoureur = new ArrayList<Coureur>();
+	public List<Epreuve> getListeEpreuve() throws IllegalArgumentException {
+		final List<Epreuve> lstEpreuve = new ArrayList<Epreuve>();
 		Connection conn = null;
 		Statement select = null;
 		ResultSet result = null;
@@ -43,19 +41,14 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 			result = select.executeQuery(query);
 
 			while (result.next()) {
-				final Coureur coureur = new Coureur();
-				coureur.setDossard(result.getInt("dossard"));
-				coureur.setNom(result.getString("nom"));
-				coureur.setPrenom(result.getString("prenom"));
-				if ("M".equals(result.getString("sexe"))) {
-					coureur.setSexe(true);
-				} else {
-					coureur.setSexe(false);
-				}
-				coureur.setCategorie(result.getString("categorie"));
-				coureur.setClub(result.getString("club"));
-				coureur.setEquipe(result.getString("equipe"));
-				lstCoureur.add(coureur);
+				final Epreuve epreuve = new Epreuve();
+				epreuve.setDossard(result.getInt("dossard"));
+				epreuve.setDiscipline(result.getString("discipline"));
+				epreuve.setTemps(result.getDouble("temps"));
+				epreuve.setPenalite(result.getDouble("penalite"));
+				epreuve.setClassement(result.getInt("classement"));
+				epreuve.setType(result.getString("type"));
+				lstEpreuve.add(epreuve);
 			}
 
 		} catch (SQLException e) {
@@ -83,7 +76,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 				}
 			}
 		}
-		return lstCoureur;
+		return lstEpreuve;
 	}
 
 }
