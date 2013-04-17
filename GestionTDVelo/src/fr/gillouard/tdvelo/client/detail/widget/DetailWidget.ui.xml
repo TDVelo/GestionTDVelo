@@ -1,0 +1,74 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+	<ui:with
+		type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
+		<ui:attributes width="1" height="-1" />
+	</ui:with>
+
+	<c:FramedPanel headingText="Détail coureur" width="350"
+		bodyStyle="background: none; padding: 5px">
+		<container:VerticalLayoutContainer>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Dossard">
+					<form:widget>
+						<form:TextField ui:field="dossard" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Nom">
+					<form:widget>
+						<form:TextField ui:field="nom" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Prénom">
+					<form:widget>
+						<form:TextField ui:field="prenom" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Sexe">
+					<form:widget>
+						<form:TextField ui:field="sexe" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Club">
+					<form:widget>
+						<form:TextField ui:field="club" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Catégorie">
+					<form:widget>
+						<form:TextField ui:field="categorie" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+			<container:child layoutData="{verticalLayoutData}">
+				<form:FieldLabel text="Equipe">
+					<form:widget>
+						<form:TextField ui:field="equipe" readOnly="true" />
+					</form:widget>
+				</form:FieldLabel>
+			</container:child>
+
+		</container:VerticalLayoutContainer>
+	</c:FramedPanel>
+</ui:UiBinder>

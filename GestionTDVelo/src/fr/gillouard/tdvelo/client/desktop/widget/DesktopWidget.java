@@ -1,12 +1,12 @@
 package fr.gillouard.tdvelo.client.desktop.widget;
 
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
 import fr.gillouard.tdvelo.client.coureur.widget.CoureurWidget;
+import fr.gillouard.tdvelo.client.detail.widget.DetailWidget;
 
 public class DesktopWidget implements IsWidget {
 
@@ -14,6 +14,7 @@ public class DesktopWidget implements IsWidget {
 	public Widget asWidget() {
 
 		final CoureurWidget coureurWid = new CoureurWidget();
+		final DetailWidget detailWid = new DetailWidget();
 		
 		final HorizontalLayoutContainer con = new HorizontalLayoutContainer();
 		con.setPixelSize(1020, 750);
@@ -27,7 +28,7 @@ public class DesktopWidget implements IsWidget {
 		ContentPanel cp2 = new ContentPanel();
 		cp2.setHeadingText("Details");
 		cp2.setPixelSize(500, 700);
-		cp2.setWidget(new HTML("This is an HTML Widget in a ContentPanel."));
+		cp2.setWidget(detailWid.asWidget());
 
 		con.add(cp2);
 
