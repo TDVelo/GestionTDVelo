@@ -20,9 +20,9 @@ import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.widget.core.client.container.Container;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
-import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
+import fr.gillouard.tdvelo.client.GestionTDVeloUtils;
 import fr.gillouard.tdvelo.client.coureur.service.CoureurService;
 import fr.gillouard.tdvelo.client.coureur.service.CoureurServiceAsync;
 import fr.gillouard.tdvelo.client.coureur.tree.Group;
@@ -30,6 +30,7 @@ import fr.gillouard.tdvelo.client.coureur.tree.KeyProvider;
 import fr.gillouard.tdvelo.client.coureur.tree.Node;
 import fr.gillouard.tdvelo.client.coureur.tree.NodeStoreFilterField;
 import fr.gillouard.tdvelo.client.coureur.tree.NodeValueProvider;
+import fr.gillouard.tdvelo.client.events.DetailEvent;
 import fr.gillouard.tdvelo.shared.Coureur;
 
 public class CoureurWidget {
@@ -109,8 +110,10 @@ public class CoureurWidget {
 				super.onBrowserEvent(context, parent, value, event,
 						valueUpdater);
 				if ("click".equals(event.getType())) {
-					Info.display("Click", "You clicked \"" + value + "\"!");
+					final int dossard = Integer.valueOf(value.substring(0, value.indexOf(" ")));
+					GestionTDVeloUtils.EVENT_BUS.fireEvent(new DetailEvent(dossard));
 				}
+				
 			}
 		};
 
