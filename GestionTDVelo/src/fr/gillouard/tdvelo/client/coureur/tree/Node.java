@@ -12,14 +12,16 @@ public class Node implements Serializable,
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
+	private String categorie;
 
 	protected Node() {
 
 	}
 
-	public Node(Integer id, String name) {
+	public Node(Integer id, String name, String categorie) {
 		this.id = id;
 		this.name = name;
+		this.categorie = categorie;
 	}
 
 	public Integer getId() {
@@ -36,6 +38,20 @@ public class Node implements Serializable,
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the categorie
+	 */
+	public String getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
 
 	@Override

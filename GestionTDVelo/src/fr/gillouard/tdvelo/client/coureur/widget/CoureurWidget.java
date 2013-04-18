@@ -31,6 +31,7 @@ import fr.gillouard.tdvelo.client.coureur.tree.Node;
 import fr.gillouard.tdvelo.client.coureur.tree.NodeStoreFilterField;
 import fr.gillouard.tdvelo.client.coureur.tree.NodeValueProvider;
 import fr.gillouard.tdvelo.client.events.DetailEvent;
+import fr.gillouard.tdvelo.client.events.ResultatEvent;
 import fr.gillouard.tdvelo.shared.Coureur;
 
 public class CoureurWidget {
@@ -90,7 +91,7 @@ public class CoureurWidget {
 										+ " "
 										+ coureur.getPrenom()
 										+ " "
-										+ coureur.getClub()));
+										+ coureur.getClub(), coureur.getCategorie()));
 					}
 
 				} catch (final Exception e) {
@@ -112,6 +113,8 @@ public class CoureurWidget {
 				if ("click".equals(event.getType())) {
 					final int dossard = Integer.valueOf(value.substring(0, value.indexOf(" ")));
 					GestionTDVeloUtils.EVENT_BUS.fireEvent(new DetailEvent(dossard));
+					final String categorie = ((String)context.getKey()).substring(((String)context.getKey()).lastIndexOf("_") + 1);
+					GestionTDVeloUtils.EVENT_BUS.fireEvent(new ResultatEvent(dossard, categorie));
 				}
 				
 			}

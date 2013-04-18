@@ -7,9 +7,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import fr.gillouard.tdvelo.shared.Epreuve;
 
 public interface EpreuveServiceAsync {
-	void getListeEpreuve(final AsyncCallback<List<Epreuve>> callback)
-			throws IllegalArgumentException;
+	
+	void changeEpreuve(boolean insert, Epreuve epreuve, AsyncCallback<Void> callback);
 
-	void ajouterEpreuve(Epreuve epreuve, AsyncCallback<Void> callback);
+	void getListeEpreuve(int dossard, AsyncCallback<List<Epreuve>> callback);
 
 }

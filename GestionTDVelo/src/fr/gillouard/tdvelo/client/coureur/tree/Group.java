@@ -20,7 +20,7 @@ public class Group extends Node {
   }
 
   public Group(Integer id, String name) {
-    super(id, name);
+    super(id, name, "");
   }
 
   public List<Node> getChildren() {

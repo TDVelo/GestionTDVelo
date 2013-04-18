@@ -22,7 +22,7 @@
       <button:TextButton text="Collapse All" ui:field="collapseAll" />
     </button:ButtonBar>
 
-    <tree:Tree ui:field="tree" width="300" height="300" valueProvider="{valueProvider}" store="{store}">
+    <tree:Tree ui:field="tree" width="500" height="700" valueProvider="{valueProvider}" store="{store}">
     </tree:Tree>
 
   </container:FlowLayoutContainer>

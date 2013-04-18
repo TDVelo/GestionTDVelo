@@ -44,66 +44,33 @@ public class Epreuve implements Serializable {
 	/**
 	 * @return the temps
 	 */
-	public double getTemps() {
+	public long getTemps() {
 		return temps;
 	}
 
 	/**
 	 * @param temps the temps to set
 	 */
-	public void setTemps(double temps) {
+	public void setTemps(long temps) {
 		this.temps = temps;
 	}
 
 	/**
 	 * @return the penalite
 	 */
-	public double getPenalite() {
+	public long getPenalite() {
 		return penalite;
 	}
 
 	/**
 	 * @param penalite the penalite to set
 	 */
-	public void setPenalite(double penalite) {
+	public void setPenalite(long penalite) {
 		this.penalite = penalite;
 	}
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * @return the classement
-	 */
-	public int getClassement() {
-		return classement;
-	}
-
-	/**
-	 * @param classement the classement to set
-	 */
-	public void setClassement(int classement) {
-		this.classement = classement;
-	}
-
-	private double temps;
+	private long temps;
 	
-	private double penalite;
-	
-	private String type;
-	
-	private int classement;
-	
+	private long penalite;
 	
 }

@@ -22,14 +22,16 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 	/** LOGGER. **/
 	private static final Log LOG = LogFactory.getLog(EpreuveServiceImpl.class);
 
-	public static String QUERRY_LISTE_EPREUVE = "SELECT * FROM epreuve order by discipline,dossard";
+	public static String QUERRY_LISTE_EPREUVE = "SELECT * FROM epreuve WHERE dossard =";
+	public static String ORDER_LISTE = " ORDER BY discipline,dossard";
+	
 	/**
 	 * UID
 	 */
 	private static final long serialVersionUID = -5217040857543351560L;
 
 	@Override
-	public List<Epreuve> getListeEpreuve() throws IllegalArgumentException {
+	public List<Epreuve> getListeEpreuve(final int dossard) throws IllegalArgumentException {
 		final List<Epreuve> lstEpreuve = new ArrayList<Epreuve>();
 		Connection conn = null;
 		Statement select = null;
@@ -38,16 +40,14 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 		try {
 			conn = DataSource.getInstance().getConnection();
 			select = conn.createStatement();
-			result = select.executeQuery(QUERRY_LISTE_EPREUVE);
+			result = select.executeQuery(QUERRY_LISTE_EPREUVE + dossard + ORDER_LISTE);
 
 			while (result.next()) {
 				final Epreuve epreuve = new Epreuve();
 				epreuve.setDossard(result.getInt("dossard"));
 				epreuve.setDiscipline(result.getString("discipline"));
-				epreuve.setTemps(result.getDouble("temps"));
-				epreuve.setPenalite(result.getDouble("penalite"));
-				epreuve.setClassement(result.getInt("classement"));
-				epreuve.setType(result.getString("type"));
+				epreuve.setTemps(result.getLong("temps"));
+				epreuve.setPenalite(result.getLong("penalite"));
 				lstEpreuve.add(epreuve);
 			}
 
@@ -79,13 +79,14 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 		return lstEpreuve;
 	}
 
-	public void ajouterEpreuve(final Epreuve epreuve) throws Exception {
+	public void changeEpreuve(final boolean insert, final Epreuve epreuve) throws Exception {
 		Statement stmt = null;
 		Connection conn = null;
 		try {
 			conn = DataSource.getInstance().getConnection();
 			stmt = conn.createStatement();
-			stmt.executeUpdate("INSERT INTO epreuve (discipline, dossard, temps, penalite, type, classement) "
+			if(insert) {
+				stmt.executeUpdate("INSERT INTO epreuve (discipline, dossard, temps, penalite) "
 					+ "VALUES("
 					+ "'"
 					+ epreuve.getDiscipline()
@@ -96,10 +97,10 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 					+ epreuve.getTemps()
 					+ ","
 					+ epreuve.getPenalite()
-					+ ","
-					+ "'"
-					+ epreuve.getType()
-					+ "'" + "," + epreuve.getClassement() + ")");
+					+ ")");
+			} else {
+				stmt.executeUpdate("UPDATE epreuve SET temps =" + epreuve.getTemps() + ", penalite=" + epreuve.getPenalite() + " WHERE discipline='" + epreuve.getDiscipline() + "' AND dossard=" + epreuve.getDossard());
+			}
 
 		} catch (SQLException e) {
 			LOG.error("Erreur SQL ajout epreuve" + epreuve, e);

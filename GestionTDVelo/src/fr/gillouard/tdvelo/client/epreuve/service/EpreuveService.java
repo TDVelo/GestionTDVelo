@@ -10,7 +10,7 @@ import fr.gillouard.tdvelo.shared.Epreuve;
 @RemoteServiceRelativePath("epreuve")
 public interface EpreuveService extends RemoteService {
 
-	List<Epreuve> getListeEpreuve() throws IllegalArgumentException;
+	List<Epreuve> getListeEpreuve(final int dossard) throws IllegalArgumentException;
 
-	void ajouterEpreuve(Epreuve epreuve) throws Exception;
+	void changeEpreuve(boolean insert, Epreuve epreuve) throws Exception;
 }
