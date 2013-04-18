@@ -48,6 +48,7 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 				epreuve.setDiscipline(result.getString("discipline"));
 				epreuve.setTemps(result.getLong("temps"));
 				epreuve.setPenalite(result.getLong("penalite"));
+				epreuve.setClassement(result.getInt("classement"));
 				lstEpreuve.add(epreuve);
 			}
 
@@ -86,7 +87,7 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 			conn = DataSource.getInstance().getConnection();
 			stmt = conn.createStatement();
 			if(insert) {
-				stmt.executeUpdate("INSERT INTO epreuve (discipline, dossard, temps, penalite) "
+				stmt.executeUpdate("INSERT INTO epreuve (discipline, dossard, temps, penalite, classement) "
 					+ "VALUES("
 					+ "'"
 					+ epreuve.getDiscipline()
@@ -97,9 +98,11 @@ public class EpreuveServiceImpl extends RemoteServiceServlet implements
 					+ epreuve.getTemps()
 					+ ","
 					+ epreuve.getPenalite()
+					+ ","
+					+ epreuve.getClassement()
 					+ ")");
 			} else {
-				stmt.executeUpdate("UPDATE epreuve SET temps =" + epreuve.getTemps() + ", penalite=" + epreuve.getPenalite() + " WHERE discipline='" + epreuve.getDiscipline() + "' AND dossard=" + epreuve.getDossard());
+				stmt.executeUpdate("UPDATE epreuve SET temps =" + epreuve.getTemps() + ", penalite=" + epreuve.getPenalite() + ", classement=" + epreuve.getClassement() + " WHERE discipline='" + epreuve.getDiscipline() + "' AND dossard=" + epreuve.getDossard());
 			}
 
 		} catch (SQLException e) {

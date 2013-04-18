@@ -13,6 +13,12 @@ public class Epreuve implements Serializable {
 	
 	private int dossard;
 	
+	private int classement;
+
+	private long temps;
+	
+	private long penalite;
+	
 	/**
 	 * @return the discipline
 	 */
@@ -69,8 +75,18 @@ public class Epreuve implements Serializable {
 		this.penalite = penalite;
 	}
 
-	private long temps;
-	
-	private long penalite;
+	/**
+	 * @return the classement
+	 */
+	public int getClassement() {
+		return classement;
+	}
+
+	/**
+	 * @param classement the classement to set
+	 */
+	public void setClassement(int classement) {
+		this.classement = classement;
+	}
 	
 }
