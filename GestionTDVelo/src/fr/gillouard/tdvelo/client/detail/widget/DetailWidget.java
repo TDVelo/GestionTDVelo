@@ -41,7 +41,7 @@ public class DetailWidget {
 	TextField categorie;
 	
 	@UiField
-	TextField equipe;
+	TextField licence;
 	
 	private final CoureurServiceAsync coureurService = GWT
 			.create(CoureurService.class);
@@ -69,7 +69,7 @@ public class DetailWidget {
 							}
 							club.setText(coureur.getClub());
 							categorie.setText(coureur.getCategorie());
-							equipe.setText(coureur.getEquipe());
+							licence.setText(coureur.getLicence());
 
 						} catch (final Exception e) {
 							Window.alert(e.getMessage());

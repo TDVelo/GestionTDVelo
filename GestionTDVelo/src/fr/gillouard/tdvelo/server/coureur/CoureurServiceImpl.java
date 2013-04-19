@@ -51,7 +51,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 				}
 				coureur.setCategorie(result.getString("categorie"));
 				coureur.setClub(result.getString("club"));
-				coureur.setEquipe(result.getString("equipe"));
+				coureur.setLicence(result.getString("licence"));
 				lstCoureur.add(coureur);
 			}
 			select.close();
@@ -84,7 +84,7 @@ public class CoureurServiceImpl extends RemoteServiceServlet implements
 			}
 			coureur.setCategorie(result.getString("categorie"));
 			coureur.setClub(result.getString("club"));
-			coureur.setEquipe(result.getString("equipe"));
+			coureur.setLicence(result.getString("licence"));
 			select.close();
 			result.close();
 			conn.close();

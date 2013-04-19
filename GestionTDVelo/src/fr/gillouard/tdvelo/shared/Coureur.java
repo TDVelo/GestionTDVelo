@@ -15,7 +15,7 @@ public class Coureur implements Serializable {
 	private boolean Sexe;
 	private String categorie;
 	private String club;
-	private String equipe;
+	private String licence;
 
 	/**
 	 * @return the dossard
@@ -108,18 +108,18 @@ public class Coureur implements Serializable {
 	}
 
 	/**
-	 * @return the equipe
+	 * @return the licence
 	 */
-	public String getEquipe() {
-		return equipe;
+	public String getLicence() {
+		return licence;
 	}
 
 	/**
-	 * @param equipe
-	 *            the equipe to set
+	 * @param licence
+	 *            the licence to set
 	 */
-	public void setEquipe(String equipe) {
-		this.equipe = equipe;
+	public void setLicence(String licence) {
+		this.licence = licence;
 	}
 
 }

@@ -62,9 +62,9 @@
 			</container:child>
 
 			<container:child layoutData="{verticalLayoutData}">
-				<form:FieldLabel text="Equipe">
+				<form:FieldLabel text="licence">
 					<form:widget>
-						<form:TextField ui:field="equipe" readOnly="true" />
+						<form:TextField ui:field="licence" readOnly="true" />
 					</form:widget>
 				</form:FieldLabel>
 			</container:child>

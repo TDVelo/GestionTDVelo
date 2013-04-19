@@ -15,7 +15,7 @@ CREATE  TABLE IF NOT EXISTS `TDVelo`.`coureur` (
   `sexe` VARCHAR(1) NOT NULL ,
   `categorie` VARCHAR(45) NOT NULL ,
   `club` VARCHAR(100) NULL DEFAULT NULL ,
-  `equipe` VARCHAR(200) NULL DEFAULT NULL ,
+  `licence` VARCHAR(200) NULL DEFAULT NULL ,
   PRIMARY KEY (`dossard`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
@@ -29,7 +29,6 @@ CREATE  TABLE IF NOT EXISTS `TDVelo`.`epreuve` (
   `dossard` INT(11) NOT NULL ,
   `temps` DOUBLE NULL DEFAULT NULL ,
   `penalite` DOUBLE NULL DEFAULT NULL ,
-  `type` VARCHAR(20) NULL DEFAULT NULL ,
   `classement` INT(11) NULL DEFAULT NULL COMMENT '		' ,
   PRIMARY KEY (`discipline`, `dossard`) ,
   INDEX `fk_epreuve_1` (`dossard` ASC) ,
