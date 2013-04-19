@@ -113,7 +113,7 @@ public class EpreuveWidget {
 	    fl1.setLabelWidth(140);
 	    c.add(fl1, new VerticalLayoutData(1, -1));
 	    discipline2 = new TextField();
-	    if(("poussin").equals(categorie)) {
+	    if(("Poussin").equals(categorie)) {
 	    	FieldLabel fl2 = new FieldLabel(discipline2, "Adresse (m,s,ms) ");
 	    	fl2.setWidth(250);
 	    	HBoxLayoutContainer hblc = new HBoxLayoutContainer();

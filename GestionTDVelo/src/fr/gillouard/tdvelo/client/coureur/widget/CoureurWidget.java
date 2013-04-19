@@ -1,5 +1,6 @@
 package fr.gillouard.tdvelo.client.coureur.widget;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.cell.client.ValueUpdater;
@@ -54,6 +55,8 @@ public class CoureurWidget {
 	public ValueProvider<Node, String> createValueProvider() {
 		return new NodeValueProvider();
 	}
+	
+	List<Group> lstGroup = new ArrayList<Group>();
 
 	/**
 	 * Create a remote service proxy to talk to the server-side Greeting
@@ -81,6 +84,7 @@ public class CoureurWidget {
 							group = new Group(coureur.getDossard() + 1000,
 									coureur.getCategorie());
 							store.add(group);
+							lstGroup.add(group);
 						}
 						store.add(
 								group,
@@ -92,6 +96,13 @@ public class CoureurWidget {
 										+ coureur.getPrenom()
 										+ " "
 										+ coureur.getClub(), coureur.getCategorie()));
+					}
+					
+					// Ajout du nombre d'enfant au titre de la categorie
+					for(Group gp : lstGroup) {
+						int countChild = store.getChildCount(gp);
+						gp.setName(gp.getName() + " " + countChild);
+						store.update(gp);
 					}
 
 				} catch (final Exception e) {
